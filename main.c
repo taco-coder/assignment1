@@ -36,6 +36,8 @@ int main(void)
 
 	while (should run)
 	{
+		printf("dioahtgresip");
+		
 		printf("osh>");
 
 		//Call parse function
