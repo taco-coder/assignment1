@@ -13,14 +13,14 @@ Main function
 *******************************************************************/
 int main(void)
 {
-	char args[MAX_LINE / 2 + 1]; /* command line arguments */
+	char *args[MAX_LINE / 2 + 1]; /* command line arguments */
 	int should_run = 1;			  /* flag to determine when to exit program */
-	char *token;
+	const char *token;
 
 	while (should_run)
 	{
 		printf("osh>");
-		scanf("%s", args);
+		scanf("%c", args);
 
 		token = strtok(args, ' ');
 
