@@ -21,7 +21,7 @@ int main(void)
 	printf("osh>");
 	scanf("%s", args);
 
-	token = strtok(args, " ");
+	token = strtok(args, "' '");
 	printf("%c\n", token[0]);
 	printf("%c\n", token[1]);
 	printf("%c\n", token[2]);
