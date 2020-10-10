@@ -38,9 +38,9 @@ int main(void)
 	}
 	else
 	{
+		wait(NULL);
 		printf("before null\n");
 		// Old Parent process. The C program will come here
-		wait(NULL);
 		printf("This line will be printed\n");
 	}
 	fflush(stdout);
