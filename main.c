@@ -35,6 +35,7 @@ int main(void)
 			printf("Terminated Incorrectly\n");
 			return 1;
 		}
+		printf("one last one for the road\n");
 	}
 	else
 	{
