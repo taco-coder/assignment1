@@ -21,8 +21,8 @@ int main(void)
 	{
 		printf("osh>");
 		scanf("%c", args);
-		printf("fuck off");
-		token = strtok(args, ' ');
+
+		token = strtok(args, " ");
 
 		if (fork() == 0)
 		{
