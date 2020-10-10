@@ -27,7 +27,7 @@ int main(void)
 	{
 		printf("forked\n");
 		// Newly spawned child Process. This will be taken over by "ls -l"
-		status_code = execvp(&token[0], token);
+		status_code = execvp(token[0], token);
 		printf("post status_code\n");
 		printf("%d\n", status_code);
 		if (status_code == -1)
