@@ -4,52 +4,45 @@ Use: Create a Unix shell that runs a series of basic commands.
 Create child processes that will execute user inputed commands.
 *******************************************************************/
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 
 #define MAX LINE 80 /* The maximum length command */
-
-/*******************************************************************
-Parse function
-parses the users inut
-*******************************************************************/
-void fflush(stdout)
-{
-
-}
-
-/*******************************************************************
-execvp
-parses the users inut
-*******************************************************************/
-void execvp(array args[], string args)
-{
-
-}
-
 /*******************************************************************
 Main function
 *******************************************************************/
 int main(void)
 {
-	char* args[MAX LINE / 2 + 1]; /* command line arguments */
-	int should run = 1; /* flag to determine when to exit program */
-	char* token;
+	char *args[MAX LINE / 2 + 1]; /* command line arguments */
+	int should_run = 1;			  /* flag to determine when to exit program */
+	char *token;
 
-	while (should run)
-	{	
+	while (should_run)
+	{
 		printf("osh>");
 		scanf("%s", args);
 
-		//Call parse function
-		fflush(stdout);
+		token = strtok(args, ' ');
 
-		/**
-		 * After reading user input, the steps are:
-		 * (1) fork a child process using fork()
-		 * (2) the child process will invoke execvp()
-		 * (3) parent will invoke wait()
-		 */
+		if (fork() == 0)
+		{
+			// Newly spawned child Process. This will be taken over by "ls -l"
+			int status_code = execvp(token[0], token);
+
+			if (status_code == -1)
+			{
+				printf("Terminated Incorrectly\n");
+				return 1;
+			}
+		}
+		else
+		{
+			// Old Parent process. The C program will come here
+			wait(NULL);
+			printf("This line will be printed\n");
+		}
+		fflush(args);
+		return 0;
 
 	}
-	return 0;
 }
