@@ -13,7 +13,7 @@ Main function
 *******************************************************************/
 int main(void)
 {
-	const char *args[MAX LINE / 2 + 1]; /* command line arguments */
+	const char *args[MAX_LINE / 2 + 1]; /* command line arguments */
 	int should_run = 1;			  /* flag to determine when to exit program */
 	const char *token;
 
