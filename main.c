@@ -22,8 +22,8 @@ int main(void)
 	scanf("%s", args);
 
 	token = strtok(args, " ");
-	printf("%c\n", token[0]);
-	printf("%c\n", token[1]);
+	printf("%s\n", token[0]);
+	printf("%s\n", token[1]);
 	if (fork() == 0)
 	{
 		printf("forked\n");
