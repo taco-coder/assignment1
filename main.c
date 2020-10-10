@@ -42,7 +42,6 @@ int main(void)
 			printf("This line will be printed\n");
 		}
 		//fflush(stdout);
-		return 0;
-
 	}
+	return 0;
 }
