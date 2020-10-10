@@ -41,7 +41,7 @@ int main(void)
 			wait(NULL);
 			printf("This line will be printed\n");
 		}
-		fflush(args);
+		//fflush(stdout);
 		return 0;
 
 	}
