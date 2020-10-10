@@ -17,7 +17,7 @@ int main(void)
 	int should_run = 1;			  /* flag to determine when to exit program */
 	const char *token;
 	int status_code = 0;
-	
+
 	while (should_run)
 	{
 		printf("osh>");
@@ -40,6 +40,7 @@ int main(void)
 		}
 		else
 		{
+			printf("before null\n");
 			// Old Parent process. The C program will come here
 			wait(NULL);
 			printf("This line will be printed\n");
