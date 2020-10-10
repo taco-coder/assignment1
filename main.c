@@ -25,6 +25,8 @@ int main(void)
 	printf("%c\n", token[0]);
 	printf("%c\n", token[1]);
 	printf("%c\n", token[2]);
+	printf("%c\n", token[3]);
+	printf("%c\n", token[4]);
 	if (fork() == 0)
 	{
 		printf("forked\n");
