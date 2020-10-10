@@ -42,7 +42,7 @@ int main(void)
 		wait(NULL);
 		printf("before null\n");
 		// Old Parent process. The C program will come here
-		printf("This line will be printed\n");
+		printf("This line will bee printed\n");
 	}
 	fflush(stdout);
 
