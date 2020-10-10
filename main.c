@@ -17,16 +17,14 @@ int main(void)
 	int should_run = 1;			  /* flag to determine when to exit program */
 	char *token;
 	int status_code = 0;
+	const char s[4] = " "; 
 
 	printf("osh>");
 	scanf("%s", args);
+	printf("%s", args);
+	token = strtok(args, s);
+	printf("%s\n", token[0]);
 
-	token = strtok(args, "' '");
-	printf("%c\n", token[0]);
-	printf("%c\n", token[1]);
-	printf("%c\n", token[2]);
-	printf("%c\n", token[3]);
-	printf("%c\n", token[4]);
 	if (fork() == 0)
 	{
 		printf("forked\n");
