@@ -19,7 +19,7 @@ int main(void)
 	int status_code = 0;
 
 	printf("osh>");
-	scanf("%c", args);
+	scanf("%s", args);
 
 	token = strtok(args, " ");
 	printf("%c\n", token[0]);
