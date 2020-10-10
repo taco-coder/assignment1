@@ -14,39 +14,55 @@ Main function
 int main(void)
 {
 	char args[MAX_LINE / 2 + 1]; /* command line arguments */
-	int should_run = 1;			  /* flag to determine when to exit program */
+	char *argument_list[3];
+	char exit[MAX_LINE / 2 + 1 ] = "exit";
+	int should_run = 1; /* flag to determine when to exit program */
 	char *token;
 	int status_code = 0;
-	const char s[4] = " "; 
+	int i = 0;
 
-	printf("osh>");
-	scanf("%s", args);
-	printf("%s", args);
-	token = strtok(args, s);
-	printf("%s\n", token[0]);
-
-	if (fork() == 0)
+	while (should_run)
 	{
-		printf("forked\n");
-		// Newly spawned child Process. This will be taken over by "ls -l"
-		status_code = execvp(token[0], token);
-		printf("post status_code\n");
-		printf("%d\n", status_code);
-		if (status_code == -1)
+		printf("osh>");
+		//captures entire string from input
+		fgets(args, MAX_LINE / 2 + 1, stdin);
+
+		//breaks up string into individual words every space
+		token = strtok(args, " ");
+		printf("%s token\n", token);
+		if (/*strcmp(args, exit) == 0*/ token == "")
 		{
-			printf("Terminated Incorrectly\n");
-			return 1;
+			printf("thioewhbfgeiohioephgaweroigrofhpussyqpoirehgfoip");
+			return 0;
 		}
-		printf("one last one for the road\n");
-	}
-	else
-	{
-		wait(NULL);
-		printf("before null\n");
-		// Old Parent process. The C program will come here
-		printf("This line will be printed\n");
-	}
-	fflush(stdout);
+		printf("%s\n", args);
+		//parse the string
+		while (token != NULL)
+		{
+			argument_list[i] = token;
 
+			token = strtok(NULL, " ");
+			i++;
+		}
+		argument_list[2] = NULL;
+
+		if (fork() == 0)
+		{
+
+			// Newly spawned child Process. This will be taken over by "ls -l"
+			status_code = execvp(argument_list[0], argument_list);
+
+			if (status_code == -1)
+			{
+				printf("Terminated Incorrectly\n");
+				return 1;
+			}
+		}
+		else
+		{
+			wait(NULL);
+		}
+		fflush(stdout);
+	}
 	return 0;
 }
