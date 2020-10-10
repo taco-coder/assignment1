@@ -18,34 +18,32 @@ int main(void)
 	const char *token;
 	int status_code = 0;
 
-	while (should_run)
+	printf("osh>");
+	scanf("%c", args);
+
+	token = strtok(args, " ");
+
+	if (fork() == 0)
 	{
-		printf("osh>");
-		scanf("%c", args);
-
-		token = strtok(args, " ");
-
-		if (fork() == 0)
+		printf("forked\n");
+		// Newly spawned child Process. This will be taken over by "ls -l"
+		status_code = execvp(token[0], token);
+		printf("post status_code\n");
+		printf("%d\n", &status_code);
+		if (status_code == -1)
 		{
-			printf("forked\n");
-			// Newly spawned child Process. This will be taken over by "ls -l"
-			status_code = execvp(token[0], token);
-			printf("post status_code\n");
-			printf("%d\n", &status_code);
-			if (status_code == -1)
-			{
-				printf("Terminated Incorrectly\n");
-				return 1;
-			}
+			printf("Terminated Incorrectly\n");
+			return 1;
 		}
-		else
-		{
-			printf("before null\n");
-			// Old Parent process. The C program will come here
-			wait(NULL);
-			printf("This line will be printed\n");
-		}
-		//fflush(stdout);
 	}
+	else
+	{
+		printf("before null\n");
+		// Old Parent process. The C program will come here
+		wait(NULL);
+		printf("This line will be printed\n");
+	}
+	fflush(stdout);
+
 	return 0;
 }
