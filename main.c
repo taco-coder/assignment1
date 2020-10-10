@@ -7,7 +7,7 @@ Create child processes that will execute user inputed commands.
 #include <string.h>
 #include <unistd.h>
 
-#define MAX LINE 80 /* The maximum length command */
+#define MAX_LINE 80 /* The maximum length command */
 /*******************************************************************
 Main function
 *******************************************************************/
