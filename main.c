@@ -16,7 +16,8 @@ int main(void)
 	char *args[MAX_LINE / 2 + 1]; /* command line arguments */
 	int should_run = 1;			  /* flag to determine when to exit program */
 	const char *token;
-
+	int status_code = 0;
+	
 	while (should_run)
 	{
 		printf("osh>");
@@ -28,7 +29,7 @@ int main(void)
 		{
 			printf("forked\n");
 			// Newly spawned child Process. This will be taken over by "ls -l"
-			int status_code = execvp(token[0], token);
+			status_code = execvp(token[0], token);
 			printf("post status_code\n");
 			printf("%d\n", &status_code);
 			if (status_code == -1)
