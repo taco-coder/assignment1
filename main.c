@@ -15,7 +15,7 @@ int main(void)
 {
 	char args[MAX_LINE / 2 + 1]; /* command line arguments */
 	char *argument_list[3];
-	char exit[MAX_LINE / 2 + 1 ] = "exit";
+
 	int should_run = 1; /* flag to determine when to exit program */
 	char *token;
 	int status_code = 0;
@@ -29,10 +29,10 @@ int main(void)
 
 		//breaks up string into individual words every space
 		token = strtok(args, " ");
-		printf("%s token\n", token);
-		if (/*strcmp(args, exit) == 0*/ token == "")
+
+		if (strcmp(args, "exit\n") == 0)
 		{
-			printf("thioewhbfgeiohioephgaweroigrofhpussyqpoirehgfoip");
+			printf("Exitting...");
 			return 0;
 		}
 		printf("%s\n", args);
